@@ -33,7 +33,7 @@
             
             $conexion = Conexion::obtenerConexion();
         
-            $sql = "SELECT * FROM Producto WHERE codigo_proveedor = :codigoProveedor";
+            $sql = "SELECT * FROM Productos WHERE codigo_proveedor = :codigoProveedor";
         
             $sentencia = $conexion->prepare($sql);
         
@@ -47,7 +47,7 @@
         
             while($productoBD = $sentencia->fetch()){
                 $proveedor = ProveedorBD::getMin($productoBD['codigo_proveedor']);
-                $producto = new Producto($productoBD['codigo'], $productoBD['pwd'], $productoBD['descripcion'], $productoBD['precio'], $producto['stock'], $proveedor);
+                $producto = new Producto($productoBD['codigo'], $productoBD['descripcion'], $productoBD['precio'], $productoBD['stock'], $proveedor);
                 $productos[] = $producto; 
             }
         

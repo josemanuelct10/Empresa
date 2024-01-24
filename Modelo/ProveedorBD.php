@@ -1,8 +1,8 @@
 <?php
     include_once "Proveedor.php";
+    include_once "ProductoBD.php";
     class ProveedorBD{
         public static function add(Proveedor $proveedor){
-            $result = false;
             include_once "../Conexion/conexion.php";
 
             $conexion = Conexion::obtenerConexion();
@@ -43,11 +43,10 @@
             if ($datosProveedor = $sentencia->fetch()) {
                 $proveedor = new Proveedor($datosProveedor['codigo'], $datosProveedor['pwd'], $datosProveedor['telefono'], $datosProveedor['email'], $datosProveedor['direccion']);
                 $proveedor->setMisProductos(null);
+                return $proveedor;
         
-                $result = $proveedor;
             }
         
-            return $result;
         }
         
         
@@ -79,8 +78,8 @@
             return $result;
         }
 
-        public static function getMax($codigoProveedor) {
-            $proveedor = self::getMin($codigoProveedor);
+        public static function getMax(Proveedor $proveedor) {
+            $proveedor = self::getMin($proveedor->getCodigo());
     
             if ($proveedor) {
                 $productos = ProductoBD::getByProveedor($proveedor);
