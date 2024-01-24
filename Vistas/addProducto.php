@@ -16,7 +16,7 @@
                 <li><a href="Inicio.php">Inicio</a></li>
                 <li><a href="addProducto.php">Añadir Producto</a></li>
                 <li><a href="filterByStock.php">Filtrar por Stock</a></li>
-                <li><a href="filtrarDescripcion.php">Filtrar por Descripcion</a></li>
+                <li><a href="filterByDescripcion.php">Filtrar por Descripcion</a></li>
                 <li><a href="manipularProducto.php">Manipular Producto</a></li>
             </ul>
         </nav>

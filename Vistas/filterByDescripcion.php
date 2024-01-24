@@ -22,12 +22,12 @@
         </nav>
     </header>
 
-    <form action="../Controlador/controllerFilterStock.php" method="post">
-        <label for="stock">Stock:</label>
-        <input type="number" id="stock" name="stock" required>
+    <form action="../Controlador/controllerFilterDescripcion.php" method="post">
+        <label for="descripcion">Descripcion</label>
+        <input type="text" id="descripcion" name="descripcion" required>
 
 
-        <button type="submit" name="filterStock">Buscar</button>
+        <button type="submit" name="filterDescripcion">Buscar</button>
     </form>
 
 </body>

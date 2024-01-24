@@ -11,7 +11,14 @@ function getProductosProveedor($codigoProveedor) {
 function mostrarProductos() {
     $proveedor = isset($_SESSION['proveedor']) ? $_SESSION['proveedor'] : null;
 
-    $productosProveedor = getProductosProveedor($proveedor->getCodigo());
+    if ($proveedor !== null) {
+        $productosProveedor = getProductosProveedor($proveedor->getCodigo());
+    
+        // Resto del código...
+    } else {
+        echo 'No se ha seleccionado un proveedor.';
+    }
+    
 
     // Ahora puedes trabajar con $productosProveedor en el resto de tu HTML
     // Por ejemplo, imprimirlos en una tabla, etc.

@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header("Location: ../Vistas/Inicio.php");
                 exit();
             } else {
+                
                 header("Location: ../Vistas/Index.php?error=La contraseña o el usuario es incorrecto.");
                 exit();
             }

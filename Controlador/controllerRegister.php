@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Agregar el proveedor
                 if (ProveedorBD::add($proveedor)) {
                     // Redirigir al controlador de inicio con el código del proveedor
-                    $_SESSION['proveedor'] = $resultado;
+                    $_SESSION['proveedor'] = $proveedor;
                     header("Location: ../Vistas/Inicio.php");
                     exit();
                 } else {

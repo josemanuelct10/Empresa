@@ -24,9 +24,8 @@
 
     <?php
     include_once "../Controlador/controllerFilterStock.php";
-    if (isset($_SESSION['resultado'])) {
-        $resultados = $_SESSION['resultado'];
-
+    if (isset($_SESSION['resultadoDescripcion'])) {
+        $resultados = $_SESSION['resultadoDescripcion'];
         // Muestra los resultados en una tabla (puedes personalizar esto según tus necesidades)
         if (!empty($resultados)) {
             echo '<table border="1">
