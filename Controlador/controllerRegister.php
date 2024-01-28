@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $resultado = ProveedorBD::getMin($codigoProveedor);
 
-            if ($resultado === null) {
+            if (!$resultado) {
                 // Agregar el proveedor
                 if (ProveedorBD::add($proveedor)) {
                     // Redirigir al controlador de inicio con el código del proveedor

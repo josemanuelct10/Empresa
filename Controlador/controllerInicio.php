@@ -1,7 +1,7 @@
 <?php
 include_once "../Modelo/Proveedor.php";
 include_once "../Modelo/ProveedorBD.php";
-session_start(); // Inicia la sesión
+session_start();
 
 function getProductosProveedor($codigoProveedor) {
     $proveedor = ProveedorBD::getMin($codigoProveedor);
@@ -13,15 +13,11 @@ function mostrarProductos() {
 
     if ($proveedor !== null) {
         $productosProveedor = getProductosProveedor($proveedor->getCodigo());
-    
-        // Resto del código...
-    } else {
+        } else {
         echo 'No se ha seleccionado un proveedor.';
     }
     
 
-    // Ahora puedes trabajar con $productosProveedor en el resto de tu HTML
-    // Por ejemplo, imprimirlos en una tabla, etc.
     if (!empty($productosProveedor)) {
         echo '<table>';
         echo '<tr><th>Código</th><th>Descripción</th><th>Precio</th><th>Stock</th></tr>';

@@ -15,9 +15,11 @@
             <ul>
                 <li><a href="Inicio.php">Inicio</a></li>
                 <li><a href="addProducto.php">Añadir Producto</a></li>
-                <li><a href="filtrarStock.php">Filtrar por Stock</a></li>
+                <li><a href="filterByStock.php">Filtrar por Stock</a></li>
                 <li><a href="filterByDescripcion.php">Filtrar por Descripcion</a></li>
-                <li><a href="manipularProducto.php">Manipular Producto</a></li>
+                <li><a href="filterByCodigo.php">Manipular Producto</a></li>
+                <li><a href="../Controlador/controllerLogOut.php">Cerrar Sesion</a></li>
+                <li><a href="updateProveedor.php">Mi Perfil</a></li>
             </ul>
         </nav>
     </header>

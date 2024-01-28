@@ -24,26 +24,22 @@
         </nav>
     </header>
 
-    <form action="../Controlador/controllerAdd.php" method="post">
-        <label for="codigo">Código:</label>
-        <input type="text" id="codigo" name="codigo" required>
+    <?php
+    include_once "../Modelo/ProveedorBD.php";
+    session_start();
+    $proveedor = $_SESSION['proveedor'];
+    $proveedorCompleto = ProveedorBD::getMax($proveedor);
+    ?>
+    <form action="../Controlador/controladorPwd.php" method="post">
+        <label for="pwdAntigua">Contraseña Actual:</label>
+        <input type="password" id="pwdAntigua" name="pwdAntigua" required>
 
-        <label for="descripcion">Descripción:</label>
-        <input type="text" id="descripcion" name="descripcion" required>
+        <label for="pwdNueva">Contraseña Nueva:</label>
+        <input type="password" id="pwdNueva" name="pwdNueva" required>
 
-        <label for="precio">Precio:</label>
-        <input type="number" id="precio" name="precio" step="0.01" required>
-
-        <label for="stock">Stock:</label>
-        <input type="number" id="stock" name="stock" required>
-
-        <button type="submit" name="addProducto">Agregar Producto</button>
-        <?php
-        if (isset($_GET['error'])) {
-            echo '<p>' .$_GET['error'] . '</p>';
-        }
-        ?>
+        <button type="submit" name="updatePwd">Actualizar Contraseña</button>
     </form>
+
 
 </body>
 </html>

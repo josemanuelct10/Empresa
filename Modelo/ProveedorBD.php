@@ -2,6 +2,10 @@
     include_once "Proveedor.php";
     include_once "ProductoBD.php";
     class ProveedorBD{
+        /**
+         * Recibe un objeto de proveedor
+         * Devuelve true-> si se ha insertado correctamente false-> si ha ocurrido algun error
+         */
         public static function add(Proveedor $proveedor){
             include_once "../Conexion/conexion.php";
 
@@ -22,6 +26,10 @@
             return $result;
         }
 
+        /**
+         * Recibe un codigo de proveedor
+         * Devuelve un proveedor con el array de este proveedor en nulo o false si el proveedor no se ha encontrado
+         */
         public static function getMin($codigoProveedor)
         {
             $result = false;
@@ -46,11 +54,16 @@
                 return $proveedor;
         
             }
+            else return $result;
         
         }
         
         
 
+        /**
+         * Recibe un proveedor
+         * Devuelve true-> si se ha actualizado correctamente false-> si ha ocurrido algún error
+         */
         public static function update(Proveedor $proveedor) {
             $result = false;
         
@@ -59,8 +72,7 @@
             $conexion = Conexion::obtenerConexion();
         
             $sql = "UPDATE proveedor 
-                    SET contrasena = :contrasena, 
-                        pwd = :pwd, 
+                    SET 
                         telefono = :telefono,
                         email = :email,
                         direccion = :direccion
@@ -69,7 +81,6 @@
             $sentencia = $conexion->prepare($sql);
         
             $sentencia->bindValue(':codigo', $proveedor->getCodigo());
-            $sentencia->bindValue(':pwd', password_hash($proveedor->getPwd(), PASSWORD_DEFAULT));
             $sentencia->bindValue(':telefono',$proveedor->getTelefono());
             $sentencia->bindValue(':email',$proveedor->getEmail());
             $sentencia->bindValue(':direccion',$proveedor->getDireccion());        
@@ -77,6 +88,11 @@
         
             return $result;
         }
+
+        /**
+         * Recibe un objeto proveedor
+         * Devuelve un proveedor ya con la lista de productos completa
+         */
 
         public static function getMax(Proveedor $proveedor) {
             $proveedor = self::getMin($proveedor->getCodigo());
@@ -89,6 +105,25 @@
             return $proveedor;
         }
         
+
+        /**
+         * Recibe un codigo de proveedor y la pwd nueva
+         * Devuelve true-> si se ha actualizado correctamente false-> si no se ha actualizado correctamente
+         */
+        public static function updatePassword($codigo, $pwdNueva) {
+            include_once "../Conexion/conexion.php";
+    
+            $conexion = Conexion::obtenerConexion();
+    
+            $sql = "UPDATE proveedor SET pwd = :pwdNueva WHERE codigo = :codigo";
+    
+            $sentencia = $conexion->prepare($sql);
+    
+            $sentencia->bindParam(':pwdNueva', $pwdNueva);
+            $sentencia->bindParam(':codigo', $codigo);
+    
+            return $sentencia->execute();
+        }
         
 
     }

@@ -7,8 +7,7 @@ session_start();
 if (isset($_POST['filterDescripcion'])){
     $descripcion = $_POST['descripcion'];
     $proveedor = $_SESSION['proveedor'];
-
-        $_SESSION['resultadoDescripcion'] = ProductoBD::getByDescripcion($proveedor, $descripcion);
+    $_SESSION['resultadoDescripcion'] = ProductoBD::getByDescripcion($proveedor, $descripcion);
 
 
     header("Location: ../Vistas/showProductosByDescripcion.php");

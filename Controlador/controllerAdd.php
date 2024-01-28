@@ -17,17 +17,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $producto = new Producto($codigo, $descripcion, $precio, $stock, $proveedor);
 
             if (ProductoBD::add($producto, $proveedor)) {
-                // Redirigir a Inicio.php y pasar el código del proveedor
                 header("Location: ../Vistas/Inicio.php");
                 exit();
             } else {
-                header("Location: ../Vistas/Index.php?error=La contraseña o el usuario es incorrecto.");
+                header("Location: ../Vistas/addProducto.php?error=Error al insertar el producto.");
                 exit();
             }
         }
         catch (Exception $e) {
             echo "Error: ".$e->getMessage();
-            header("Location: ../Vistas/Index.php?error=exception");
+            header("Location: ../Vistas/addProducto.php?error=Ya existe un producto con ese codigo.");
             exit();
         }
         
